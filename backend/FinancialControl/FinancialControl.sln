@@ -1,0 +1,88 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialControl.API", "src\FinancialControl.API\FinancialControl.API.csproj", "{17640091-E1DC-4E5A-83AC-86657C58D84C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8DB05022-55AE-44CF-A0AC-597EB5CD2D0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialControl.Application", "src\FinancialControl.Application\FinancialControl.Application.csproj", "{5AF29D57-B171-4840-BF09-E74AF35442CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialControl.Domain", "src\FinancialControl.Domain\FinancialControl.Domain.csproj", "{13DDE1B2-9DE0-4583-863B-4C33771320A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialControl.Infrastructure", "src\FinancialControl.Infrastructure\FinancialControl.Infrastructure.csproj", "{EE9456C0-CA45-4D74-8A0B-2A7DD98CC76D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialControl.IoC", "src\FinancialControl.IoC\FinancialControl.IoC.csproj", "{AC571AE8-0942-49BC-83A4-37BECBEA1EFF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{4ADA2A74-CC4C-44B5-B71F-22CD3210D247}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialControl.API.Tests", "tests\FinancialControl.API.Tests\FinancialControl.API.Tests.csproj", "{ADEEB7C7-4DB7-4A10-8A4D-534029188EF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialControl.Application.Tests", "tests\FinancialControl.Application.Tests\FinancialControl.Application.Tests.csproj", "{5F701101-FFF4-46E0-9FFA-679F393DA35E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialControl.Domain.Tests", "tests\FinancialControl.Domain.Tests\FinancialControl.Domain.Tests.csproj", "{425A975C-2A73-4C20-91A3-4F85D78AF6CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialControl.Infrastructure.Tests", "tests\FinancialControl.Infrastructure.Tests\FinancialControl.Infrastructure.Tests.csproj", "{9D33ECBA-1915-4120-9BAF-8C2D8BC1F825}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17640091-E1DC-4E5A-83AC-86657C58D84C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17640091-E1DC-4E5A-83AC-86657C58D84C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17640091-E1DC-4E5A-83AC-86657C58D84C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17640091-E1DC-4E5A-83AC-86657C58D84C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AF29D57-B171-4840-BF09-E74AF35442CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AF29D57-B171-4840-BF09-E74AF35442CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AF29D57-B171-4840-BF09-E74AF35442CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AF29D57-B171-4840-BF09-E74AF35442CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13DDE1B2-9DE0-4583-863B-4C33771320A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13DDE1B2-9DE0-4583-863B-4C33771320A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13DDE1B2-9DE0-4583-863B-4C33771320A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13DDE1B2-9DE0-4583-863B-4C33771320A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE9456C0-CA45-4D74-8A0B-2A7DD98CC76D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE9456C0-CA45-4D74-8A0B-2A7DD98CC76D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE9456C0-CA45-4D74-8A0B-2A7DD98CC76D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE9456C0-CA45-4D74-8A0B-2A7DD98CC76D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC571AE8-0942-49BC-83A4-37BECBEA1EFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC571AE8-0942-49BC-83A4-37BECBEA1EFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC571AE8-0942-49BC-83A4-37BECBEA1EFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC571AE8-0942-49BC-83A4-37BECBEA1EFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADEEB7C7-4DB7-4A10-8A4D-534029188EF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADEEB7C7-4DB7-4A10-8A4D-534029188EF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADEEB7C7-4DB7-4A10-8A4D-534029188EF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADEEB7C7-4DB7-4A10-8A4D-534029188EF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F701101-FFF4-46E0-9FFA-679F393DA35E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F701101-FFF4-46E0-9FFA-679F393DA35E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F701101-FFF4-46E0-9FFA-679F393DA35E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F701101-FFF4-46E0-9FFA-679F393DA35E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{425A975C-2A73-4C20-91A3-4F85D78AF6CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{425A975C-2A73-4C20-91A3-4F85D78AF6CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{425A975C-2A73-4C20-91A3-4F85D78AF6CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{425A975C-2A73-4C20-91A3-4F85D78AF6CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D33ECBA-1915-4120-9BAF-8C2D8BC1F825}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D33ECBA-1915-4120-9BAF-8C2D8BC1F825}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D33ECBA-1915-4120-9BAF-8C2D8BC1F825}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D33ECBA-1915-4120-9BAF-8C2D8BC1F825}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{17640091-E1DC-4E5A-83AC-86657C58D84C} = {8DB05022-55AE-44CF-A0AC-597EB5CD2D0A}
+		{5AF29D57-B171-4840-BF09-E74AF35442CD} = {8DB05022-55AE-44CF-A0AC-597EB5CD2D0A}
+		{13DDE1B2-9DE0-4583-863B-4C33771320A6} = {8DB05022-55AE-44CF-A0AC-597EB5CD2D0A}
+		{EE9456C0-CA45-4D74-8A0B-2A7DD98CC76D} = {8DB05022-55AE-44CF-A0AC-597EB5CD2D0A}
+		{AC571AE8-0942-49BC-83A4-37BECBEA1EFF} = {8DB05022-55AE-44CF-A0AC-597EB5CD2D0A}
+		{ADEEB7C7-4DB7-4A10-8A4D-534029188EF6} = {4ADA2A74-CC4C-44B5-B71F-22CD3210D247}
+		{5F701101-FFF4-46E0-9FFA-679F393DA35E} = {4ADA2A74-CC4C-44B5-B71F-22CD3210D247}
+		{425A975C-2A73-4C20-91A3-4F85D78AF6CC} = {4ADA2A74-CC4C-44B5-B71F-22CD3210D247}
+		{9D33ECBA-1915-4120-9BAF-8C2D8BC1F825} = {4ADA2A74-CC4C-44B5-B71F-22CD3210D247}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6A516730-3873-4539-9BD8-8DFD9A8FC0C7}
+	EndGlobalSection
+EndGlobal
