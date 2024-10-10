@@ -7,20 +7,39 @@
     <UserSecretsId>06b42b25-98e5-4f15-bd77-01925975936c</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
+    <DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.4.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.8.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Middlewares\" />
     <Folder Include="DTOs\" />
     <Folder Include="Filters\" />
     <Folder Include="Logging\" />
     <Folder Include="Validation\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="E:\financial_control\backend\FinancialControl\src\FinancialControl.API\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="E:\financial_control\backend\FinancialControl\src\FinancialControl.API\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FinancialControl.Application\FinancialControl.Application.csproj" />
+    <ProjectReference Include="..\FinancialControl.Infrastructure\FinancialControl.Infrastructure.csproj" />
+    <ProjectReference Include="..\FinancialControl.IoC\FinancialControl.IoC.csproj" />
   </ItemGroup>
 
 </Project>
