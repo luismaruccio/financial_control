@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FinancialControl.Application\FinancialControl.Application.csproj" />
+    <ProjectReference Include="..\FinancialControl.Domain\FinancialControl.Domain.csproj" />
     <ProjectReference Include="..\FinancialControl.Infrastructure\FinancialControl.Infrastructure.csproj" />
   </ItemGroup>
 

@@ -1,6 +1,5 @@
 ﻿using FinancialControl.API.Controllers;
 using FinancialControl.Application.Commands.Users.CreateUser;
-using FluentAssertions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
