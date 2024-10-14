@@ -14,7 +14,7 @@ namespace FinancialControl.IoC.DependencyInjection
         {
 
             //Mediatr
-            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateUserCommandHandler).Assembly));
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateUserHandler).Assembly));
 
             //Validators
             services.AddScoped<IValidator<CreateUserCommand>, CreateUserCommandValidator>();
