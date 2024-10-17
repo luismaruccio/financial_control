@@ -7,7 +7,7 @@ namespace FinancialControl.Infrastructure.Repositories;
 
 public class UserRespository(FinancialControlDbContext context) : IUserRepository
 {
-    protected readonly FinancialControlDbContext _context = context;
+    private readonly FinancialControlDbContext _context = context;
 
     public async Task<bool> AddUserAsync(User user)
     {
@@ -15,7 +15,6 @@ public class UserRespository(FinancialControlDbContext context) : IUserRepositor
         var affectedRows = await _context.SaveChangesAsync();
 
         return affectedRows > 0;
-
     }
 
     public async Task<User?> GetUserByIdAsync(int id) 
@@ -29,8 +28,7 @@ public class UserRespository(FinancialControlDbContext context) : IUserRepositor
         _context.Set<User>().Update(user);
         var affectedRows = await _context.SaveChangesAsync();
 
-        return affectedRows > 0;
-        
+        return affectedRows > 0;        
     }
 
     public async Task<bool> DeleteUserAsync(User user)
@@ -39,7 +37,6 @@ public class UserRespository(FinancialControlDbContext context) : IUserRepositor
         var affectedRows = await _context.SaveChangesAsync();
 
         return affectedRows > 0;
-
     }
 
 }
