@@ -1,4 +1,5 @@
-﻿using FinancialControl.Application.Extensions;
+﻿using FinancialControl.Application.Commands.Notifications.EmailValidation;
+using FinancialControl.Application.Extensions;
 using FinancialControl.Application.Interfaces.Services;
 using FinancialControl.Application.Messages;
 using FinancialControl.Domain.Entities;
@@ -8,11 +9,12 @@ using MediatR;
 
 namespace FinancialControl.Application.Commands.Users.CreateUser;
 
-public sealed class CreateUserHandler(IUserRepository userRepository, IEncryptionService encryptionService, IValidator<CreateUserCommand> validator) : IRequestHandler<CreateUserCommand, CreateUserResponse>
+public sealed class CreateUserHandler(IUserRepository userRepository, IEncryptionService encryptionService, IValidator<CreateUserCommand> validator, IMediator mediator) : IRequestHandler<CreateUserCommand, CreateUserResponse>
 {
     private readonly IUserRepository _userRepository = userRepository;
     private readonly IEncryptionService _encryptionService = encryptionService;
     private readonly IValidator<CreateUserCommand> _validator = validator;
+    private readonly IMediator _mediator = mediator;
     public async Task<CreateUserResponse> Handle(CreateUserCommand command, CancellationToken cancellationToken)
     {
         var validationResponse = await ValidateCommandAsync(command);
@@ -25,7 +27,14 @@ public sealed class CreateUserHandler(IUserRepository userRepository, IEncryptio
 
         var newUser = MapToUser(command);
 
-        return await AddNewUserAsync(newUser);    
+        var response = await AddNewUserAsync(newUser);
+
+        if (response.Success)
+        {
+            await _mediator.Publish(new EmailValidationNotification(newUser), cancellationToken);
+        }
+
+        return response;
     }
 
     private async Task<CreateUserResponse?> ValidateCommandAsync(CreateUserCommand command)

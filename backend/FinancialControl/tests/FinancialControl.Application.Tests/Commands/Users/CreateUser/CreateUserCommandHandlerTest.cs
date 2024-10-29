@@ -1,4 +1,5 @@
-﻿using FinancialControl.Application.Commands.Users.CreateUser;
+﻿using FinancialControl.Application.Commands.Notifications.EmailValidation;
+using FinancialControl.Application.Commands.Users.CreateUser;
 using FinancialControl.Application.Extensions;
 using FinancialControl.Application.Interfaces.Services;
 using FinancialControl.Application.Messages;
@@ -7,6 +8,7 @@ using FinancialControl.Domain.Interfaces.Repositories;
 using FluentAssertions;
 using FluentValidation;
 using FluentValidation.Results;
+using MediatR;
 using Moq;
 
 namespace FinancialControl.Application.Tests.Commands.Users.CreateUser
@@ -16,11 +18,12 @@ namespace FinancialControl.Application.Tests.Commands.Users.CreateUser
         private readonly Mock<IUserRepository> _userRepositoryMock = new();
         private readonly Mock<IEncryptionService> _encryptionServiceMock = new();
         private readonly Mock<IValidator<CreateUserCommand>> _validatorMock = new();
+        private readonly Mock<IMediator> _mediatorMock = new();
         private readonly CreateUserHandler _createUserCommandHandler;
 
         public CreateUserCommandHandlerTest()
         {
-            _createUserCommandHandler = new CreateUserHandler(_userRepositoryMock.Object, _encryptionServiceMock.Object, _validatorMock.Object);
+            _createUserCommandHandler = new CreateUserHandler(_userRepositoryMock.Object, _encryptionServiceMock.Object, _validatorMock.Object, _mediatorMock.Object);
         }
 
         [Fact]
@@ -64,7 +67,7 @@ namespace FinancialControl.Application.Tests.Commands.Users.CreateUser
         }
 
         [Fact]
-        public async Task Handle_WhenCalledWithValidCommand_ShouldCallToHassPassword()
+        public async Task Handle_WhenCalledWithValidCommand_ShouldCallToHashPassword()
         {
             var command = GetUserCommand();
             var validationResult = new ValidationResult();
@@ -136,6 +139,23 @@ namespace FinancialControl.Application.Tests.Commands.Users.CreateUser
             var response = await _createUserCommandHandler.Handle(command, CancellationToken.None);
 
             response.Should().BeEquivalentTo(responseExpected);
+        }
+
+        [Fact]
+        public async Task Handle_WhenUserIsSuccessfullyCreated_ShouldPublishEmailValidationNotification()
+        {
+            var command = GetUserCommand();
+            var validationResult = new ValidationResult();
+
+            _validatorMock.Setup(mock => mock.ValidateAsync(command, It.IsAny<CancellationToken>()))
+                          .ReturnsAsync(validationResult);
+            _userRepositoryMock.Setup(mock => mock.GetUserByEmailAsync(command.Email)).ReturnsAsync((User?)null);
+            _encryptionServiceMock.Setup(mock => mock.HashPassword(command.Password)).Returns("$argon2id$v=19$m=131072,t=6,p=1$H8WcSxQFH2Ha3OelT/3f9A$awbybGomRW/bOAtJG7qXYxpdnYc/2u85Oy2EDfnx17E");
+            _userRepositoryMock.Setup(mock => mock.AddUserAsync(It.IsAny<User>())).ReturnsAsync(true);
+
+            await _createUserCommandHandler.Handle(command, CancellationToken.None);
+
+            _mediatorMock.Verify(mock => mock.Publish(It.IsAny<EmailValidationNotification>(), It.IsAny<CancellationToken>()));
         }
 
         private static CreateUserCommand GetUserCommand() =>
