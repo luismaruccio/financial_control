@@ -8,11 +8,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<FinancialControlDbContext>(options =>
-     options.UseNpgsql(GetDatabaseConnectionString(builder.Configuration),
-                      b => b.MigrationsAssembly("FinancialControl.Infrastructure")));
-
-builder.Services.AddDependencies();
+builder.Services.AddDependencies(builder.Configuration);
 
 var app = builder.Build();
 
@@ -31,17 +27,6 @@ app.MapControllers();
 ApplyMigrations(app);
 
 await app.RunAsync();
-
-static string? GetDatabaseConnectionString(IConfiguration configuration)
-{
-    var envConnectionString = Environment.GetEnvironmentVariable("DATABASE_CONNECTION_STRING");
-    if (string.IsNullOrEmpty(envConnectionString))
-    {
-        var connectionString = configuration.GetConnectionString("DefaultConnection");
-        return connectionString;
-    }
-    return envConnectionString;
-}
 
 static void ApplyMigrations(WebApplication app)
 {

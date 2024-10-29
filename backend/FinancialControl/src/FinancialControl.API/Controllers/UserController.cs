@@ -10,7 +10,7 @@ public class UserController(IMediator mediator) : ControllerBase
     private readonly IMediator _mediator = mediator;
 
     [HttpPost]
-    public async Task<IActionResult> CreateUser(CreateUserCommandRequest request)
+    public async Task<IActionResult> CreateUser(CreateUserRequest request)
     {
         var result = await _mediator.Send(request.ToCommand());
         

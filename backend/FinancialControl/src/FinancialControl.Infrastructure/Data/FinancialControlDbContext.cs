@@ -6,6 +6,7 @@ namespace FinancialControl.Infrastructure.Data;
 public class FinancialControlDbContext(DbContextOptions<FinancialControlDbContext> options) : DbContext(options)
 {
     public DbSet<User> Users { get; set; }
+    public DbSet<ValidationCode> ValidationCodes { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

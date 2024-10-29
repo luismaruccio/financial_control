@@ -1,6 +1,5 @@
 ﻿using FinancialControl.API.Controllers;
 using FinancialControl.Application.Commands.Users.CreateUser;
-using FluentAssertions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -20,11 +19,11 @@ public class UserControllerTests
     [Fact]
     public async Task CreateUser_WhenUserCreated_ShouldReturnHttpStatusOk()
     {
-        var commnadResult = new CreateUserCommandResponse(Success: true, Message: string.Empty);
+        var commnadResult = new CreateUserResponse(Success: true, Message: string.Empty);
 
         _mediatorMock.Setup(mock => mock.Send(It.IsAny<CreateUserCommand>(), It.IsAny<CancellationToken>())).ReturnsAsync(commnadResult);
 
-        var request = new CreateUserCommandRequest(name: "Test", email: "test@test.com", password: "P4$$w0rd");
+        var request = new CreateUserRequest(name: "Test", email: "test@test.com", password: "P4$$w0rd");
 
         var result = await _userController.CreateUser(request);
 
@@ -35,11 +34,11 @@ public class UserControllerTests
     [Fact]
     public async Task CreateUser_WhenUserIsNotCreated_ShouldReturnHttpStatusBadRequest()
     {
-        var commnadResult = new CreateUserCommandResponse(Success: false, Message: string.Empty);
+        var commnadResult = new CreateUserResponse(Success: false, Message: string.Empty);
 
         _mediatorMock.Setup(mock => mock.Send(It.IsAny<CreateUserCommand>(), It.IsAny<CancellationToken>())).ReturnsAsync(commnadResult);
 
-        var request = new CreateUserCommandRequest(name: "Test", email: "test@test.com", password: "P4$$w0rd");
+        var request = new CreateUserRequest(name: "Test", email: "test@test.com", password: "P4$$w0rd");
 
         var result = await _userController.CreateUser(request);
 
